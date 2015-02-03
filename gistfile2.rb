@@ -15,54 +15,57 @@ class Point < Struct.new(:x, :y)
   def to_rust
     RustPoint.make_point(x, y)
   end
+
+  def self.distance(p1, p2)
+    RustPoint.get_distance(p1.to_rust, p2.to_rust)
+  end
 end
 
-def make_point(x, y)
-  Point.new(x, y)
-end
-
-def get_distance(p1, p2)
-  RustPoint.get_distance(p1.to_rust, p2.to_rust)
-end
-
-$p0 = make_point(0,0)
-$p1 = make_point(1,2)
-$p2 = make_point(3,4)
+$p0 = Point.new(0, 0)
+$p1 = Point.new(1, 2)
+$p2 = Point.new(3, 4)
 
 class Test < Minitest::Test
   def test_no_distance
-    l0 = get_distance($p1, $p1)
-    assert(l0 == 0)
+    distance = Point.distance($p1, $p1)
+
+    assert_equal(0, distance)
   end
 
   def test_some_distance1
-    l1 = get_distance(make_point(2,3), make_point(12,0))
-    assert(l1 > 10 && l1 < 11)
+    distance = Point.distance(Point.new(2, 3), Point.new(12, 0))
+
+    assert(distance > 10 && distance < 11)
   end
 
   def test_some_distance2
-    l2 = get_distance(make_point(2,0), make_point(12,0))
-    assert(l2 == 10.0)
+    distance = Point.distance(Point.new(2, 0), Point.new(12, 0))
+
+    assert_equal(10.0, distance)
   end
 
   def test_some_distance3
-    l3 = get_distance($p1, $p2)
-    l4 = get_distance($p2, $p1)
-    assert(l3 == l4)
+    distance1 = Point.distance($p1, $p2)
+    distance2 = Point.distance($p2, $p1)
+
+    assert_equal(distance1, distance2)
   end
 
   def test_some_distance5
-    l5 = get_distance(make_point(2,0), make_point(12,0))
-    assert(l5 == 10.0)
+    distance = Point.distance(Point.new(2, 0), Point.new(12, 0))
+
+    assert_equal(10.0, distance)
   end
 
   def test_some_distance6
-    l6 = get_distance(make_point(2,0), $p2)
-    assert(l6 > 4 && l6 < 5)
+    distance = Point.distance(Point.new(2, 0), $p2)
+
+    assert(distance > 4 && distance < 5)
   end
 
   def test_some_distance7
-    l7 = get_distance(make_point(2,0), $p1)
-    assert(l7 > 2 && l7 < 3)
+    distance = Point.distance(Point.new(2, 0), $p1)
+
+    assert(distance > 2 && distance < 3)
   end
 end
