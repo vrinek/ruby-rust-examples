@@ -1,3 +1,6 @@
+#![feature(core)]
+#![allow(missing_copy_implementations)]
+
 use std::num::Int;
 use std::num::Float;
 
@@ -14,17 +17,10 @@ impl Line {
 
 #[no_mangle]
 pub extern "C" fn make_point(x: i32, y: i32) -> Box<Point> {
-    let point = Box::new(Point { x: x, y: y });
-
-    println!("new point {:p} => ({}, {})", &*point, x, y);
-
-    point
+    Box::new(Point { x: x, y: y })
 }
 
 #[no_mangle]
 pub extern "C" fn get_distance(p1: Box<Point>, p2: Box<Point>) -> f64 {
-    println!("{:p} => ({}, {})", &*p1, p1.x, p1.y);
-    println!("{:p} => ({}, {})", &*p2, p2.x, p2.y);
-
     Line {p1: *p1, p2: *p2}.length()
 }
