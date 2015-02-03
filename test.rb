@@ -1,6 +1,8 @@
 require "./points.rb"
 require "minitest/autorun"
 
+Point = WorkingPoint
+
 $p0 = Point.new(0, 0)
 $p1 = Point.new(1, 2)
 $p2 = Point.new(3, 4)
