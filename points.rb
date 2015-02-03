@@ -1,6 +1,5 @@
 require "fiddle"
 require "fiddle/import"
-require "minitest/autorun"
 
 module RustPoint
   extend Fiddle::Importer

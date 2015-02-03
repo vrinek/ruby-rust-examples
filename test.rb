@@ -1,4 +1,5 @@
-require './points.rb'
+require "./points.rb"
+require "minitest/autorun"
 
 $p0 = Point.new(0, 0)
 $p1 = Point.new(1, 2)
