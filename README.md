@@ -4,4 +4,10 @@ This is a short collection of examples on interoperability between Ruby and Rust
 
 A simple struct on the Rust side is handled as a pointer the Ruby side.
 
-Deals with: ownership/lifetime, integers, pointers
+Deals with: ownership/lifetime, integers
+
+# Messages
+
+Passes messages between Rust and Ruby.
+
+Deals with: strings
