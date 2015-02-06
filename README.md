@@ -11,3 +11,9 @@ Deals with: ownership/lifetime, integers
 Passes messages between Rust and Ruby.
 
 Deals with: strings
+
+# Cryptography
+
+Calculates MD5 hash given an number or a string.
+
+Deals with: cargo, crates

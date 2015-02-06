@@ -1,0 +1,14 @@
+[package]
+
+name = "cryptography"
+version = "0.0.1"
+authors = ["Kostas Karachalios <vrinek@me.com>"]
+
+[lib]
+
+name = "crypto"
+crate-type = ["dylib"]
+
+[dependencies]
+
+rust-crypto = "0.2.14"

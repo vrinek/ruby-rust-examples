@@ -16,7 +16,7 @@ class WorkingPoint < Struct.new(:x, :y)
     RustPoint.get_distance(p1.to_rust, p2.to_rust)
   end
 
-  private
+  # private
 
   def to_rust
     RustPoint.make_point(x, y)
